@@ -1,7 +1,9 @@
 name: terraform
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -47,3 +49,5 @@ jobs:
       - uses: hashicorp/setup-terraform@v4
       - run: terraform init -backend-config="key=prod.tfstate"
       - run: terraform apply -auto-approve -var-file=envs/prod.tfvars
+
+      #deva
